@@ -15,6 +15,7 @@ export const Search = ({ setSearchAttr, setActivePageAttr }) => {
               }}
               className="input"
               placeholder="Search in Ricky & Morty family"
+              autoFocus={true}
             />
           </div>
         </div>
