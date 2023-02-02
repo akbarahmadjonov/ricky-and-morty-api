@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { FilterButton } from "./FilterButtons/FilterButton";
 
-export const Filter = ({ setStatus, setGender }) => {
+export const Filter = ({ setStatus, setGender, setSpecies }) => {
   // Variables
   const tabs = document.querySelectorAll(".tab");
 
@@ -17,15 +18,51 @@ export const Filter = ({ setStatus, setGender }) => {
   // Status data
   const statusData = ["Alive", "Dead", "Unknown"];
 
-  // Gender Data
+  // Gender data
   const genderData = ["Female", "Male", "Genderless", "Unknown"];
+
+  // Species data
+  const speciesData = [
+    "Human",
+    "Alien",
+    "Humanoid",
+    "Animal",
+    "Robot",
+    "Cronenberg",
+    "Mytholog",
+    "Disease",
+    "Poopybutthole",
+  ];
+
+  // Clear filter
+  const [clear, setClear] = useState();
+  const handleClick = () => {
+    setClear(true);
+  };
 
   return (
     <>
-      <div className="accordion position-fixed mb-5">
+      <div className="accordion mb-5">
         <h3 className="text-secondary text-center mb-5">
           <i className="fa-solid fa-arrow-up-wide-short"></i> Filter
         </h3>
+        <button
+          onClick={handleClick}
+          type="button"
+          className="clear mb-3 d-block mx-auto"
+        >
+          Clear All
+        </button>
+        <p className={clear ? "d-block text-danger" : "d-none"}>
+          <i className="fa-solid fa-circle-exclamation"></i> Sorry for the
+          inconvience, This feature is currently not working.
+        </p>
+        <a
+          className={clear ? "d-block text-primary" : "d-none"}
+          href="https://google.com"
+        >
+          More info
+        </a>
         <div className="tab">
           <div className="tab-name">
             Filter by Status
@@ -74,7 +111,17 @@ export const Filter = ({ setStatus, setGender }) => {
               />
             </svg>
           </div>
-          <div className="tab-content"></div>
+          <div className="tab-content overflow-auto">
+            {speciesData.map((item, index) => (
+              <FilterButton
+                setValue={setSpecies}
+                key={index}
+                name="species"
+                index={index}
+                statusName={item}
+              />
+            ))}
+          </div>
         </div>
         <div className="tab">
           <div className="tab-name">

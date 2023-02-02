@@ -31,14 +31,14 @@ export const Card = ({ image, status, name, location, gender }) => {
           })()}
           <h4 className="mt-2">{name}</h4>
           <p className="mt-1 fs-5">
-            <i class="fa-solid fa-location-dot"></i> Last location:{" "}
+            <i class="fa-solid fa-location-dot mt-3"></i> Last location:{" "}
             <span className="fs-6">{location}</span>
           </p>
           <p className="mt-1 fs-5">
-            <i class="fa-solid fa-person-circle-question"></i> Gender:{" "}
+            <i class="fa-solid fa-person-circle-question mt-3"></i> Gender:{" "}
             <span className="fs-6">{gender}</span>
           </p>
-          <div className="user">
+          {/* <div className="user">
             <img
               src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo"
               alt="user"
@@ -47,7 +47,7 @@ export const Card = ({ image, status, name, location, gender }) => {
               <h5>July Dec</h5>
               <small>2h ago</small>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

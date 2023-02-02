@@ -1,8 +1,10 @@
 export const FilterButton = ({ statusName, index, name, setValue }) => {
   return (
-    <div className="p-1">
+    <div className="p-1 m-2">
       <input
-        onClick={() => setValue(statusName)}
+        onClick={() => {
+          setValue(statusName);
+        }}
         type="checkbox"
         className="btn-check"
         id={`${name}-${index}`}
@@ -15,16 +17,6 @@ export const FilterButton = ({ statusName, index, name, setValue }) => {
       >
         {statusName}
       </label>
-      {/* Gender */}
-      {/* <input
-        type="checkbox"
-        className="btn-check"
-        id="btn-check-outlined"
-        autocomplete="off"
-      />
-      <label className="btn btn-secondary text-white" for="btn-check-outlined">
-        {statusName}
-      </label> */}
     </div>
   );
 };

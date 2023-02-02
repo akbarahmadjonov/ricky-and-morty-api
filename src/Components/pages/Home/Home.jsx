@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import { Search } from "../../Search/Search";
 import { Filter } from "../../Filter/Filter";
 import { Card } from "../../Card/Card";
+import { Pagination } from "../../Pagination/Pagination";
 
 export const Home = () => {
   const [activePage, setActivePage] = useState(1);
   const [status, setStatus] = useState("");
   const [gender, setGender] = useState("");
+  const [species, setSpecies] = useState("");
+  const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
-  const API = `https://rickandmortyapi.com/api/character/?page=${activePage}&status=${status}&gender=${gender}`;
+  const API = `https://rickandmortyapi.com/api/character/?page=${activePage}&status=${status}&gender=${gender}&name=${search}&species=${species}`;
   const { info, results } = data;
 
   useEffect(() => {
@@ -21,10 +24,7 @@ export const Home = () => {
 
   return (
     <>
-      <h4 className="mt-4 text-center">
-        Ricky and Morty family <i class="fa-solid fa-people-roof"></i>
-      </h4>
-      <Search />
+      <Search setSearchAttr={setSearch} setActivePageAttr={setActivePage} />
       <div className="row">
         <div className="col-9">
           {results?.length ? (
@@ -44,9 +44,18 @@ export const Home = () => {
           )}
         </div>
         <div className="col-3">
-          <Filter setStatus={setStatus} setGender={setGender} />
+          <Filter
+            setStatus={setStatus}
+            setGender={setGender}
+            setSpecies={setSpecies}
+          />
         </div>
       </div>
+      <Pagination
+        activePage={activePage}
+        setActivePageAttr={setActivePage}
+        totalPage={info?.pages}
+      />
     </>
   );
 };
